@@ -27,9 +27,7 @@ endif;
                 <td><?=date( "d-m-Y h:i A",strtotime($student['created_at']))?></td>
                 <td><?=$student['fname']. " " . $student['lname']?></td>
                 <td><?=$student['gradeLevel']?></td>
-                <td>
-                    <a href="<?php echo $this->viewStudent;?>" id="view" name="view" class="btn btn-secondary mx-auto">View</a>
-                </td>
+                
                 <td>
                     <a href="<?php echo $this->editStudent;?>" id="edit" name="edit" class="btn btn-info mx-auto">Edit</a>
                 </td>

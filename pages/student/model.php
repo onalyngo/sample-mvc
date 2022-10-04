@@ -37,7 +37,7 @@ class Student_Model extends Model{
 		);
 
 		if( $query->rowCount()>0 ):
-			return $query->fetch();
+			return $query->fetch(PDO::FETCH_ASSOC);
 		endif;
 	}
 
@@ -67,8 +67,8 @@ class Student_Model extends Model{
        
 	}
     
-    //delete action
-    public function delStudent( $del )
+    //delete 
+    public function deleteStudent( $del )
 	{
 		$query = $this->db->prepare("DELETE FROM ".TABLE_STUDENTS." WHERE id = ".$del);
 		$query->execute();

@@ -59,12 +59,14 @@ class Student extends Controller {
         $this->view->render("student/addStudent_view");
     }
 
-    //view update member
+    //view update student
     public function editStudent( $id ){
         $this->view->page_title = "Edit Student";        
        
         if(!isset($_POST["save"])):            
-            $this->view->data = $this->model->selectStudent( $id );
+            $sql = "SELECT * FROM ".TABLE_STUDENTS." WHERE id=:id";
+            
+            $this->model->db->select( $sql, $array = array(), $fetch_mode = PDO::FETCH_ASSOC );
             
             $this->view->render("student/editStudent_view");
         else:
@@ -83,9 +85,9 @@ class Student extends Controller {
     
     }
 
-    //delete members
-    public function delete( $del ){
-        $this->model->delStudent( $del );          
+    //delete student
+    public function delete( $id ){
+        $this->model->deleteStudent( $id );          
     }
 
 
