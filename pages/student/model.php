@@ -58,10 +58,5 @@ class Student_Model extends Model{
             return $query->fetch();
         endif;
 	}
-    
-    public function deleteStudent( $del ){
-		$query = $this->db->prepare("DELETE FROM ".TABLE_STUDENTS." WHERE id = ".$del);
-		$query->execute();
-        header("location:view_students");       
-	}
+
 }

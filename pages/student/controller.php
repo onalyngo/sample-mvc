@@ -75,12 +75,5 @@ class Student extends Controller {
             
             header("location:view_students");
         endif;        
-    
     }
-
-    public function delete( $id ){
-        $this->model->deleteStudent( $id );          
-    }
-
-
 }
