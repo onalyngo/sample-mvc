@@ -1,7 +1,5 @@
 <?php
-
 class Student extends Controller {
-    
     public function __construct(){
         parent::__construct();
     }
@@ -14,7 +12,6 @@ class Student extends Controller {
         $this->view->render("student/index_view");
     }
 
-    //Login
     public function login(){
         $this->view->page_title = "Login";
         if(isset($_POST['submit'])):            
@@ -25,14 +22,12 @@ class Student extends Controller {
         $this->view->render("student/login_view");        
     }
 
-    public function get_student( $id )
-	{
+    public function get_student( $id ){
 		$this->view->page_title = "Display student";
 		$this->view->data = $this->model->getStudent( $id );
 		$this->view->render("student/student_view");
 	}
 
-    //view all students
     public function view_students(){
         $this->view->page_title = "View Students";
         $this->view->data = $this->model->getStudents();
@@ -42,7 +37,6 @@ class Student extends Controller {
         $this->view->render("student/students_view");
     }
 
-    //add student
     public function addStudent(){
         $this->view->page_title = "Add Student";       
         
@@ -59,7 +53,6 @@ class Student extends Controller {
         $this->view->render("student/addStudent_view");
     }
 
-    //view update student
     public function editStudent( $id ){
         $this->view->page_title = "Edit Student";        
        
@@ -85,7 +78,6 @@ class Student extends Controller {
     
     }
 
-    //delete student
     public function delete( $id ){
         $this->model->deleteStudent( $id );          
     }

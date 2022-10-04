@@ -6,8 +6,7 @@ class Student_Model extends Model{
 
     }
     
-    public function loginMember($username, $password)
-	{
+    public function loginMember($username, $password){
 		$query = $this->db->prepare("SELECT * FROM ".TABLE_MEMBERS." WHERE username = :username AND password = :password");
 		$query->execute( 
             [
@@ -27,8 +26,7 @@ class Student_Model extends Model{
 		endif;     
 	}
 
-    public function getStudent( $id )
-	{
+    public function getStudent( $id ){
 		$query = $this->db->prepare("SELECT * FROM ".TABLE_STUDENTS." WHERE id=:id" );
 		$query->execute(
 			[
@@ -41,35 +39,27 @@ class Student_Model extends Model{
 		endif;
 	}
 
-    public function getStudents()
-	{
+    public function getStudents(){
 		$query = $this->db->prepare("SELECT * FROM ".TABLE_STUDENTS );
 		$query->execute();
-
 		if( $query->rowCount()>0 ):
 			return $query->fetchAll();
 		endif;
 	}
 
-    //select Student
-    public function selectStudent($id)
-	{
+    public function selectStudent($id){
         $query = $this->db->prepare("SELECT * FROM ".TABLE_STUDENTS." WHERE member_id = :id");
 		$query->execute(
             [
                 "id" => $id
             ]
         );        
-        
         if( $query->rowCount()>0 ):
             return $query->fetch();
         endif;
-       
 	}
     
-    //delete 
-    public function deleteStudent( $del )
-	{
+    public function deleteStudent( $del ){
 		$query = $this->db->prepare("DELETE FROM ".TABLE_STUDENTS." WHERE id = ".$del);
 		$query->execute();
         header("location:view_students");       
