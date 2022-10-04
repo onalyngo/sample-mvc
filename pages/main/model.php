@@ -15,6 +15,7 @@ class Main_Model extends Model{
 		);
 
 		if( $query->rowCount()>0 ):
+			// echo $query;
 			return $query->fetchAll();
 		endif;
 	}
