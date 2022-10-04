@@ -33,7 +33,6 @@ class Student_Model extends Model{
 				"id" => $id
 			]
 		);
-
 		if( $query->rowCount()>0 ):
 			return $query->fetch(PDO::FETCH_ASSOC);
 		endif;
@@ -46,17 +45,4 @@ class Student_Model extends Model{
 			return $query->fetchAll();
 		endif;
 	}
-
-    public function selectStudent($id){
-        $query = $this->db->prepare("SELECT * FROM ".TABLE_STUDENTS." WHERE member_id = :id");
-		$query->execute(
-            [
-                "id" => $id
-            ]
-        );        
-        if( $query->rowCount()>0 ):
-            return $query->fetch();
-        endif;
-	}
-
 }
