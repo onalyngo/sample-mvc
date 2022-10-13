@@ -1,11 +1,3 @@
-<?php
-session_start();
-
-if( !isset($_SESSION["CSRF_TOKEN"]) ):
-    header("location:login");
-endif;
-?>
-
 <div class="container py-5 bg-light">
     <input type="hidden" id="id" name="id" value="<?php echo $data["id"]?>">
     <h3 class="mb-3 text-center">Students</h3>

@@ -3,9 +3,9 @@
 class Student_Model extends Model{
     public function __construct(){
         parent::__construct();
-
     }
     
+	// login
     public function loginMember($username, $password){
 		$query = $this->db->prepare("SELECT * FROM ".TABLE_MEMBERS." WHERE username = :username AND password = :password");
 		$query->execute( 
@@ -26,6 +26,12 @@ class Student_Model extends Model{
 		endif;     
 	}
 
+	 //logout 
+	public function logout(){
+		 session_destroy();
+	}
+	
+	// to view the update action
     public function getStudent( $id ){
 		$query = $this->db->prepare("SELECT * FROM ".TABLE_STUDENTS." WHERE id=:id" );
 		$query->execute(
@@ -34,10 +40,11 @@ class Student_Model extends Model{
 			]
 		);
 		if( $query->rowCount()>0 ):
-			return $query->fetch(PDO::FETCH_ASSOC);
+			return $query->fetch();
 		endif;
 	}
 
+	// to view all the students
     public function getStudents(){
 		$query = $this->db->prepare("SELECT * FROM ".TABLE_STUDENTS );
 		$query->execute();
